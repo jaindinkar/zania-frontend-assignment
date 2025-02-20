@@ -52,7 +52,11 @@ export default function Datagrid() {
             type="checkbox"
             className="mr-2"
             checked={isAllSelected}
-            ref={(el) => el && (el.indeterminate = isSomeSelected)}
+            ref={(el) => {
+              if (el) {
+                el.indeterminate = isSomeSelected as boolean
+              }
+            }}
             onChange={toggleSelectAll}
           />
           <span>{selectedCount > 0 ? `${selectedCount} Selected` : "None Selected"}</span>
